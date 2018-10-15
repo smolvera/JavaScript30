@@ -59,6 +59,34 @@
 
 <script>
 
+  
+  // function to play the sound on a keydown event
+  function playSound(e) {
+    console.log("this is the keyCode: " + e.keyCode);
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+    if(!audio) return; //stop function from running if invalid key is pressed
+    audio.currentTime = 0; //rewinds audio to start for multiple plays
+
+    // calls the function to run
+    audio.play()
+
+    // adds the transition class to the key event
+    key.classList.add('playing');
+    
+  };
+ 
+//  funtion to remove transition
+  function removeTransition(e) {
+    if(e.propertyName !== 'transform') return;
+    this.classList.remove('playing');
+  };
+  // loop through keys and add a transition to each key down event
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+  // adds event listener on when a key is played and calls the playSound function
+  window.addEventListener('keydown', playSound);
 </script>
 
 
