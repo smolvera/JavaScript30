@@ -18,29 +18,64 @@
     }
 
     // Regular
+    console.log("hello");
 
     // Interpolated
+    console.log("I am a %s string!", ":)");
+    // ES6 style
+    var smiley = ':)';
+    console.log(`I am a ${smiley} string!`);
 
     // Styled
+    console.log('%c I am some awesome styled text', 'font-size: 20px; font-family: "Comic Sans MS", cursive, sans-serif; background: red; text-shadow: 10px');
 
     // warning!
-
+    console.warn('This is your final warning!');
     // Error :|
-
+    console.error('Errors are learning opportunities!');
     // Info
+    console.info("Fact: Snakes can\'t slither on grass!");
 
     // Testing
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('ouch'), 'That is wrong!') //will show fail because it is wrong
+
+    console.assert('2 === 2'); //wont display because it is true
 
     // clearing
+    console.clear(); //clear the console ???
 
     // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
+
+    console.clear();
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old!`);
+      console.groupEnd(`${dog.name}`);
+    }) 
+    
 
     // counting
 
+    console.count('Sam');
+    console.count('Sam');
+    console.count('Sam');
+    console.count('Sam');
+    console.count('Sam');
+
     // timing
 
+    console.time('fetching data');
+    fetch('https://api.github.com/users/smolvera')
+    .then(data => data.json())
+    .then(data => {
+      console.timeEnd('fetching data');
+      console.log(data);
+    })
   </script>
 </body>
 </html>
